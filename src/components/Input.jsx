@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+import AddIcon from "@mui/icons-material/Add";
+import { Fab, Zoom } from "@mui/material";
 
 function Input(props) {
   const [noteItem, setNoteItem] = useState({
     title: "",
     content: "",
   });
+
+  const [expend, setExpend] = useState(false);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -13,31 +17,41 @@ function Input(props) {
     });
   }
 
+  function handleExpend() {
+    setExpend(true);
+  }
+
   return (
     <div>
-      <form>
-        <input
-          onChange={handleChange}
-          name="title"
-          placeholder="title"
-          value={noteItem.title}
-        />
+      <form className="create-note">
+        {expend ? (
+          <input
+            onChange={handleChange}
+            name="title"
+            placeholder="title"
+            value={noteItem.title}
+          />
+        ) : null}
+
         <textarea
+          onClick={handleExpend}
           onChange={handleChange}
           name="content"
           placeholder="content"
           value={noteItem.content}
-          rows="3"
+          rows={expend ? 3 : 1}
         />
-        <button
-          onClick={(e) => {
-            props.onAdd(noteItem);
-            setNoteItem({ title: "", content: "" });
-            e.preventDefault();
-          }}
-        >
-          ADD
-        </button>
+        <Zoom in={expend}>
+          <Fab
+            onClick={(e) => {
+              props.onAdd(noteItem);
+              setNoteItem({ title: "", content: "" });
+              e.preventDefault();
+            }}
+          >
+            <AddIcon />
+          </Fab>
+        </Zoom>
       </form>
     </div>
   );
