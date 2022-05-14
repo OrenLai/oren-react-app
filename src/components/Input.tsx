@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { Fab, Zoom } from "@mui/material";
 
+export interface NoteType {
+  title: string;
+  content: string;
+}
+
 function Input(props) {
-  const [noteItem, setNoteItem] = useState({
+  const [noteItem, setNoteItem] = useState<NoteType>({
     title: "",
     content: "",
   });
 
-  const [expend, setExpend] = useState(false);
+  const [expend, setExpend] = useState<boolean>(false);
 
   function handleChange(event) {
     const { name, value } = event.target;
