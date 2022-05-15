@@ -7,7 +7,16 @@ export interface NoteType {
   content: string;
 }
 
-function Input(props) {
+interface Props {
+  onAdd: Function;
+}
+
+// interface TextEvent {
+//   name: string;
+//   value: string;
+// }
+
+function Input(props: Props) {
   const [noteItem, setNoteItem] = useState<NoteType>({
     title: "",
     content: "",
@@ -15,7 +24,11 @@ function Input(props) {
 
   const [expend, setExpend] = useState<boolean>(false);
 
-  function handleChange(event) {
+  function handleChange(
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) {
     const { name, value } = event.target;
     setNoteItem((prevValue) => {
       return { ...prevValue, [name]: value };

@@ -1,7 +1,15 @@
 import React from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-function Note(props) {
+interface Props {
+  key: number;
+  id: number;
+  title: string;
+  content: string;
+  onDelete: Function;
+}
+
+function Note(props: Props) {
   return (
     <div className="note">
       <h1>{props.title}</h1>

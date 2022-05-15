@@ -3,11 +3,10 @@ import Header from "./Header";
 import Input from "./Input";
 import Note from "./Note";
 import Footer from "./Footer";
-
 import { NoteType } from "./Input";
 
 function App() {
-  const [notes, setNotes] = useState<NoteType[] | null>([]);
+  const [notes, setNotes] = useState<NoteType[]>([]);
 
   function addNote(newNote: NoteType) {
     setNotes((prevList) => {
