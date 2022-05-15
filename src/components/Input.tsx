@@ -11,11 +11,6 @@ interface Props {
   onAdd: Function;
 }
 
-// interface TextEvent {
-//   name: string;
-//   value: string;
-// }
-
 function Input(props: Props) {
   const [noteItem, setNoteItem] = useState<NoteType>({
     title: "",
