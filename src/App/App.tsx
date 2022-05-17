@@ -3,12 +3,12 @@ import Header from "./Header";
 import Input from "./Input";
 import Note from "./Note";
 import Footer from "./Footer";
-import { NoteType } from "./Input";
+import { NoteT } from "./types";
 
 function App() {
-  const [notes, setNotes] = useState<NoteType[]>([]);
+  const [notes, setNotes] = useState<NoteT[]>([]);
 
-  function addNote(newNote: NoteType) {
+  function addNote(newNote: NoteT) {
     setNotes((prevList) => {
       return [...prevList, newNote];
     });
@@ -16,7 +16,7 @@ function App() {
 
   function deleteNotes(id: number) {
     setNotes((prevList) => {
-      return prevList.filter((item: NoteType, index: number) => {
+      return prevList.filter((item: NoteT, index: number) => {
         return index !== id;
       });
     });
@@ -26,7 +26,7 @@ function App() {
     <div>
       <Header />
       <Input onAdd={addNote} />
-      {notes.map((note: NoteType, index: number) => (
+      {notes.map((note: NoteT, index: number) => (
         <Note
           key={index}
           id={index}

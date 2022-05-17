@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { Fab, Zoom } from "@mui/material";
-
-export interface NoteType {
-  title: string;
-  content: string;
-}
+import { NoteT } from "./types";
 
 interface Props {
   onAdd: Function;
 }
 
 function Input(props: Props) {
-  const [noteItem, setNoteItem] = useState<NoteType>({
+  const [noteItem, setNoteItem] = useState<NoteT>({
     title: "",
     content: "",
   });
