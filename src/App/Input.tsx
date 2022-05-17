@@ -26,10 +26,6 @@ function Input(props: Props) {
     });
   }
 
-  function handleExpend() {
-    setExpend(true);
-  }
-
   return (
     <div>
       <form className="create-note">
@@ -43,7 +39,7 @@ function Input(props: Props) {
         ) : null}
 
         <textarea
-          onClick={handleExpend}
+          onClick={() => setExpend(true)}
           onChange={handleChange}
           name="content"
           placeholder="content"
